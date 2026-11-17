@@ -3,7 +3,6 @@ streamlit==1.67.0
 matplotlib==3.11.2
 typst==0.15.2
 numpy==2.4.6
-anthropic==2.8.0   # opcional: solo para el modo «Claude en vivo»
 # Solo para pruebas E2E y capturas
 playwright==1.65.2
 pymupdf==2.1

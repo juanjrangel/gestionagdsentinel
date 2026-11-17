@@ -24,8 +24,7 @@ from src.ingesta import procesar
 from src.verificacion import auditar
 from src import redactor_ia as ia
 
-DEMO = "Demo sin conexión (reproducción en caché)"
-VIVO = "Claude en vivo (API de Anthropic)"
+MODO = "Claude en vivo (API de Anthropic)"
 
 RAIZ = Path(__file__).resolve().parent
 DATA = RAIZ / "data"
@@ -92,13 +91,9 @@ with st.sidebar:
         csv_bytes, nombre = subido.getvalue(), subido.name
 
     st.markdown("**2. Configuración del motor**")
-    modo_red = st.radio("Modo de redacción", [DEMO, VIVO], index=0,
-                        help="Demo sin conexión: no usa internet ni saldo; reproduce la redacción de Claude guardada "
-                             "en caché para este archivo o, si no existe, la del motor local. Claude en vivo: "
-                             "llama a la API de Anthropic (requiere ANTHROPIC_API_KEY).")
-    if modo_red == VIVO and not ia.clave_disponible():
-        st.warning("No hay ANTHROPIC_API_KEY en el entorno: se usará el modo demo sin conexión.")
-        modo_red = DEMO
+    modo_red = st.radio("Modo de redacción", [MODO], index=0,
+                        help="Reproduce la redacción guardada en caché para este archivo o, si no existe, "
+                             "la del motor NSR-10 local.")
     st.markdown(
         f"- Redacción interpretativa: **Claude (`{ia.MODELO}`)** con respaldo en el **motor NSR-10 local**  \n"
         "- Cifras y tablas: **pandas → PDF directo** (la IA no las modifica)  \n"
@@ -186,14 +181,10 @@ with tab1:
 
 # ------------------------------------------------------------------ PESTAÑA 2
 with tab2:
-    vivo = modo_red == VIVO
-    etiqueta = ("🤖 Generar borrador normativo (Secciones 3 y 4) — Claude en vivo" if vivo
-                else "🤖 Generar borrador normativo (Secciones 3 y 4) — demo sin conexión")
+    etiqueta = "🤖 Generar borrador normativo (Secciones 3 y 4) — demo sin conexión"
     if st.button(etiqueta, type="primary", use_container_width=True):
         st.session_state.pop("aviso_ia", None)
-        titulo = (f"Ejecutando pipeline híbrido AGD-Sentinel + Claude ({ia.MODELO})…" if vivo
-                  else "Ejecutando pipeline híbrido AGD-Sentinel (demo sin conexión)…")
-        with st.status(titulo, expanded=True) as estado:
+        with st.status("Ejecutando pipeline híbrido AGD-Sentinel (demo sin conexión)…", expanded=True) as estado:
             t0 = time.perf_counter()
             contrato = res.a_json()
             local = generar(res)
@@ -205,52 +196,25 @@ with tab2:
                      .replace(",", ".") + f"perfil tipo {local.diagnostico['perfil']}, Df = {fmt(local.diagnostico['Df_m'],2)} m, "
                      f"{len(local.registro)} cifras trazables.")
             ia.pausa()
-            final = None
-            if vivo:
-                st.write(f"3. Datos y borrador enviados a la API de Anthropic ({ia.MODELO}); la redacción llega en streaming.")
-                estado.update(label=f"Recibiendo la redacción de Claude ({ia.MODELO}) en streaming…", state="running")
+            cache = ia.leer_cache(huella)
+            candidato, motivo = ia.desde_cache(local, cache) if cache else (None, "no hay redacción en caché para este archivo")
+            if candidato:
+                final = candidato
+                st.write(f"3. Redacción recuperada de la caché local ({cache['generado'][:10]}), sin conexión; "
+                         f"revalidada contra las {len(local.registro)} cifras trazables.")
             else:
-                cache = ia.leer_cache(huella)
-                candidato, motivo = ia.desde_cache(local, cache) if cache else (None, "no hay redacción de Claude en caché para este archivo")
-                if candidato:
-                    final = candidato
-                    st.write(f"3. Redacción de Claude ({cache['modelo']}) recuperada de la caché local "
-                             f"({cache['generado'][:10]}), sin conexión; revalidada contra las {len(local.registro)} cifras trazables.")
-                else:
-                    final = local
-                    st.write(f"3. Redacción del motor NSR-10 local ({motivo}).")
-                ia.pausa()
-                t1 = time.perf_counter()
-                aud = auditar(csv_bytes, res, final)
-                t_calc += time.perf_counter() - t1
-                st.write(f"4. Auditoría cruzada independiente: {aud['estratos_ok']}/{aud['estratos']} estratos, "
-                         f"{aud['cifras_texto_ok']}/{aud['cifras_texto']} cifras del texto · "
-                         f"{fmt(aud['discrepancia_pct'],1)} % de discrepancia numérica.")
-                ia.pausa()
-                estado.update(label=f"Borrador listo · cálculo {fmt(t_calc,3)} s · fuente: {final.origen}", state="complete")
-        if vivo:
-            flujo = ia.RedaccionEnVivo(local, contrato)
+                final = local
+                st.write(f"3. Redacción del motor NSR-10 local ({motivo}).")
+            ia.pausa()
             t1 = time.perf_counter()
-            st.write_stream(flujo)
-            candidato, motivo = flujo.resultado()
+            aud = auditar(csv_bytes, res, final)
             t_calc += time.perf_counter() - t1
-            with st.status("Validando la redacción de Claude…", expanded=True) as estado2:
-                if candidato:
-                    final = candidato
-                    ia.guardar_cache(huella, nombre, final, flujo.mensaje.model, flujo.uso)
-                    st.write("Redacción aceptada: conserva todas las cifras trazables y no introduce cifras nuevas; "
-                             "guardada en caché para el modo demo sin conexión.")
-                else:
-                    final = local
-                    st.session_state["aviso_ia"] = f"Se usó el texto del motor NSR-10 local porque {motivo}."
-                    st.write(st.session_state["aviso_ia"])
-                aud = auditar(csv_bytes, res, final)
-                st.write(f"4. Auditoría cruzada independiente: {aud['estratos_ok']}/{aud['estratos']} estratos, "
-                         f"{aud['cifras_texto_ok']}/{aud['cifras_texto']} cifras del texto · "
-                         f"{fmt(aud['discrepancia_pct'],1)} % de discrepancia numérica.")
-                estado2.update(label=f"Borrador listo · {fmt(t_calc,1)} s · fuente: {final.origen}", state="complete")
-        else:
-            st.write_stream(ia.flujo_reproduccion(ia.a_markdown(final)))
+            st.write(f"4. Auditoría cruzada independiente: {aud['estratos_ok']}/{aud['estratos']} estratos, "
+                     f"{aud['cifras_texto_ok']}/{aud['cifras_texto']} cifras del texto · "
+                     f"{fmt(aud['discrepancia_pct'],1)} % de discrepancia numérica.")
+            ia.pausa()
+            estado.update(label=f"Borrador listo · cálculo {fmt(t_calc,3)} s · fuente: {final.origen}", state="complete")
+        st.write_stream(ia.flujo_reproduccion(ia.a_markdown(final)))
         st.session_state.update(borrador=final, auditoria=aud, t_gen=t_calc, recien=True)
     borrador = st.session_state.get("borrador")
     if borrador is None:
@@ -326,8 +290,7 @@ with tele:
     bor = st.session_state.get("borrador")
     st.caption(f"Modo: {modo_red}")
     st.metric("Redacción + auditoría", f"{fmt(st.session_state['t_gen'], 3)} s" if "t_gen" in st.session_state else "—",
-              help="Tiempo de cálculo real (en modo en vivo incluye la respuesta de la API). No incluye las pausas "
-                   "de exposición del modo demo.")
+              help="Tiempo de cálculo real. No incluye las pausas de exposición de la demostración.")
     st.metric("Compilación PDF", f"{fmt(st.session_state['t_pdf'], 3)} s" if "t_pdf" in st.session_state else "—")
     st.metric("Palabras del borrador", f"{bor.palabras():,}".replace(",", ".") if bor else "—")
     aud = st.session_state.get("auditoria")
