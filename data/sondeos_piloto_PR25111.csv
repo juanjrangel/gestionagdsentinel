@@ -1,0 +1,17 @@
+﻿Sondeo,Prof_Inicio_m,Prof_Fin_m,USCS,Descripción,N_SPT,Humedad_pct,LL_pct,IP_pct,qa_tm2
+S-01,0.0,1.5,CL,Arcilla de baja plasticidad café,8,24.5,38,16,11.2
+S-01,1.5,3.0,CL,Arcilla de baja plasticidad café rojiza,14,21.0,36,15,16.8
+S-01,3.0,4.5,SC,Arena arcillosa amarillenta,22,16.2,29,11,24.5
+S-01,4.5,6.0,SM,Arena limosa compacta,29,14.0,NP,NP,31.0
+S-02,0.0,1.5,CL,Arcilla de baja plasticidad café,7,25.8,39,17,10.5
+S-02,1.5,3.0,CL,Arcilla de baja plasticidad café rojiza,13,22.1,37,15,15.9
+S-02,3.0,4.5,SC,Arena arcillosa amarillenta,20,17.0,30,12,23.0
+S-02,4.5,6.0,SM,Arena limosa compacta,28,14.5,NP,NP,30.2
+S-03,0.0,1.5,MH,Limo de alta plasticidad gris oscuro,6,31.2,52,21,9.8
+S-03,1.5,3.0,CL,Arcilla de baja plasticidad café,12,23.4,38,16,15.0
+S-03,3.0,4.5,SC,Arena arcillosa amarillenta,21,16.8,28,10,23.8
+S-03,4.5,6.0,SM,Arena limosa compacta,30,13.8,NP,NP,32.1
+S-04,0.0,1.5,CL,Arcilla de baja plasticidad café,9,23.9,37,15,11.8
+S-04,1.5,3.0,CL,Arcilla de baja plasticidad café rojiza,15,20.5,35,14,17.4
+S-04,3.0,4.5,SC,Arena arcillosa amarillenta,23,15.9,28,11,25.2
+S-04,4.5,6.0,SM,Arena limosa compacta,31,13.5,NP,NP,33.0

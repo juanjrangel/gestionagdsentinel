@@ -1,0 +1,17 @@
+﻿Sondeo,Prof_Inicio_m,Prof_Fin_m,USCS,Descripción,N_SPT,Humedad_pct,LL_pct,IP_pct,qa_tm2
+S-01,0.0,1.5,SC,Arena arcillosa densa café,24,17.2,31,12,24.0
+S-01,1.5,3.0,SM,Arena limosa muy densa,36,13.6,NP,NP,31.5
+S-01,3.0,4.5,GP,Grava mal gradada con arena,47,11.4,NP,NP,39.0
+S-01,4.5,6.0,GP,Grava mal gradada muy densa,62,9.8,NP,NP,46.5
+S-02,0.0,1.5,SC,Arena arcillosa densa café,22,17.8,32,12,22.5
+S-02,1.5,3.0,SM,Arena limosa muy densa,34,14.1,NP,NP,30.5
+S-02,3.0,4.5,GP,Grava mal gradada con arena,45,11.9,NP,NP,38.0
+S-02,4.5,6.0,GP,Grava mal gradada muy densa,60,10.2,NP,NP,45.5
+S-03,0.0,1.5,SC,Arena arcillosa densa amarillenta,26,16.4,30,11,25.5
+S-03,1.5,3.0,SC,Arena arcillosa muy densa,38,13.2,29,10,33.0
+S-03,3.0,4.5,GP,Grava mal gradada con arena,49,10.9,NP,NP,40.5
+S-03,4.5,6.0,GP,Grava mal gradada muy densa,65,9.5,NP,NP,48.0
+S-04,0.0,1.5,SM,Arena limosa densa,25,15.3,NP,NP,24.5
+S-04,1.5,3.0,SM,Arena limosa muy densa,37,12.8,NP,NP,32.0
+S-04,3.0,4.5,GP,Grava mal gradada con arena,46,11.1,NP,NP,39.5
+S-04,4.5,6.0,GP,Grava mal gradada muy densa,63,9.7,NP,NP,47.0

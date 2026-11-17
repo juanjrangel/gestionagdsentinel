@@ -1,0 +1,17 @@
+﻿Sondeo,Prof_Inicio_m,Prof_Fin_m,USCS,Descripción,N_SPT,Humedad_pct,LL_pct,IP_pct,qa_tm2
+S-01,0.0,1.5,CL,Arcilla arenosa café rojiza,11,24.6,38,16,12.8
+S-01,1.5,3.0,CL,Arcilla arenosa café firme,17,22.3,36,15,18.4
+S-01,3.0,4.5,SC,Arena arcillosa café amarillenta,24,18.5,30,12,25.6
+S-01,4.5,6.0,SC,Arena arcillosa densa,29,16.2,28,10,29.8
+S-02,0.0,1.5,CL,Arcilla arenosa café rojiza,10,25.9,40,18,12.1
+S-02,1.5,3.0,CL,Arcilla arenosa café firme,16,23.1,37,16,17.6
+S-02,3.0,4.5,SC,Arena arcillosa café amarillenta,23,19.0,31,12,24.9
+S-02,4.5,6.0,SC,Arena arcillosa densa,28,16.8,29,11,29.1
+S-03,0.0,1.5,CL,Arcilla arenosa café rojiza,12,23.8,37,15,13.5
+S-03,1.5,3.0,SC,Arena arcillosa café,18,21.4,33,13,19.2
+S-03,3.0,4.5,SC,Arena arcillosa café amarillenta,25,18.1,29,11,26.4
+S-03,4.5,6.0,SC,Arena arcillosa densa,31,15.7,27,9,30.6
+S-04,0.0,1.5,CL,Arcilla arenosa café rojiza,13,22.9,35,14,14.2
+S-04,1.5,3.0,CL,Arcilla arenosa café firme,19,20.8,34,14,19.9
+S-04,3.0,4.5,SC,Arena arcillosa café amarillenta,26,17.6,28,10,27.1
+S-04,4.5,6.0,SC,Arena arcillosa densa,30,15.4,26,9,31.2

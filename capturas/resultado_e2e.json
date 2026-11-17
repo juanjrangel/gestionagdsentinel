@@ -1,0 +1,20 @@
+{
+  "caso": "sondeos_piloto_PR25111.csv",
+  "bloqueado_con_0_1_2_3": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "habilitado_con_4": true,
+  "pdf": "Informe_Geotecnico_PR25111.pdf",
+  "paginas": 4,
+  "e2e_automatizado_s": 16.08,
+  "telemetria_sidebar": [
+    "0,013 s",
+    "0,018 s",
+    "0,332 s",
+    "1.175",
+    "16/16 = 0,0 %"
+  ]
+}

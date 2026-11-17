@@ -1,0 +1,17 @@
+﻿Sondeo,Prof_Inicio_m,Prof_Fin_m,USCS,Descripción,N_SPT,Humedad_pct,LL_pct,IP_pct,qa_tm2
+S-01,0.0,1.5,CH,Arcilla de alta plasticidad gris blanda,4,42.8,68,36,6.4
+S-01,1.5,3.0,MH,Limo elástico gris verdoso blando,5,40.6,61,27,7.1
+S-01,3.0,4.5,MH,Limo elástico café grisáceo,6,36.2,56,24,8.3
+S-01,4.5,6.0,CL,Arcilla limosa café firme,8,32.4,47,21,9.2
+S-02,0.0,1.5,CH,Arcilla de alta plasticidad gris blanda,4,44.5,72,38,6.2
+S-02,1.5,3.0,CH,Arcilla de alta plasticidad gris,5,41.3,65,33,7.0
+S-02,3.0,4.5,MH,Limo elástico café grisáceo,7,35.1,54,23,8.6
+S-02,4.5,6.0,CL,Arcilla limosa café firme,8,32.0,46,20,9.4
+S-03,0.0,1.5,MH,Limo elástico gris blando,5,39.7,63,28,6.9
+S-03,1.5,3.0,MH,Limo elástico gris verdoso blando,5,38.4,59,26,7.4
+S-03,3.0,4.5,MH,Limo elástico café grisáceo,6,34.6,55,22,8.1
+S-03,4.5,6.0,CL,Arcilla limosa café firme,7,33.3,48,19,8.9
+S-04,0.0,1.5,CH,Arcilla de alta plasticidad gris blanda,4,43.6,70,37,6.3
+S-04,1.5,3.0,MH,Limo elástico gris verdoso blando,5,40.1,62,27,7.2
+S-04,3.0,4.5,MH,Limo elástico café grisáceo,6,35.8,57,25,8.0
+S-04,4.5,6.0,MH,Limo elástico café firme,8,33.9,52,22,9.1

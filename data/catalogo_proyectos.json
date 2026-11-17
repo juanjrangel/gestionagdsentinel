@@ -1,0 +1,30 @@
+{
+  "sondeos_piloto_PR25111.csv": {
+    "codigo": "PR25111",
+    "proyecto": "Edificio Residencial Cabecera",
+    "municipio": "Bucaramanga",
+    "uso": "Edificación residencial multifamiliar de 6 niveles",
+    "cliente": "Cliente anonimizado (Ley 1581 de 2012)"
+  },
+  "sondeos_PR25118_Clinica_Floridablanca.csv": {
+    "codigo": "PR25118",
+    "proyecto": "Centro Médico Cañaveral",
+    "municipio": "Floridablanca",
+    "uso": "Edificación institucional de salud de 5 niveles",
+    "cliente": "Cliente anonimizado (Ley 1581 de 2012)"
+  },
+  "sondeos_PR25124_Bodega_Giron.csv": {
+    "codigo": "PR25124",
+    "proyecto": "Plataforma Logística Chimitá",
+    "municipio": "Girón",
+    "uso": "Bodega industrial de gran luz con placa de piso cargada",
+    "cliente": "Cliente anonimizado (Ley 1581 de 2012)"
+  },
+  "sondeos_PR25130_Torre_Piedecuesta.csv": {
+    "codigo": "PR25130",
+    "proyecto": "Conjunto Residencial Menzuly",
+    "municipio": "Piedecuesta",
+    "uso": "Torres residenciales de 8 niveles",
+    "cliente": "Cliente anonimizado (Ley 1581 de 2012)"
+  }
+}

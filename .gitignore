@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+cache_redaccion/
+output_pdfs/_test_*.pdf
+capturas/_tab*.png
